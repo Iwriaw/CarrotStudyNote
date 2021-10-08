@@ -1,11 +1,77 @@
 # Python3 学习笔记
-## 建立数据库连接
+## python基础
+### with as语句
+## mysql-connector使用
+### 导入包
+```python
+import mysql.connection
+```
+### 建立数据库连接
 ``` python
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
     passwd="hushiqi"
 )
+```
+### 选择数据库建立连接
+```python
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="hushiqi",
+    database="carrot_db"
+)
+```
+### 执行sql语句
+```python
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="hushiqi"
+)
+mycsr = mydb.cursor()
+mycsr.execute("SHOW DATABASES")
+mycsr.commit()#如果执行对表内容修改的语句，需要commit才能在数据库生效
+```
+### 带参数的execute()防止sql注入
+```python
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="hushiqi"
+    database="carrot_db"
+)
+mycsr = mydb.cursor()
+#传入可迭代数据结构
+mycsr.execute("SELECT * FROM user WHERE name=%s", ["carrot"])
+```
+### executemany()批量执行sql语句
+```python
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="hushiqi",
+  database="carrot_db"
+)
+mycsr = mydb.cursor()
+sql = "INSERT INTO users (name, age) VALUES (%s, %s)"
+val = [
+    ("hushiqi", 21),
+    ("honglongyu", 21),
+    ("huyue", 22)
+]
+mycsr.executemany(sql, val)
+mydb.commit()    # 数据表内容有更新，必须使用到该语句
+```
+
+### 执行完sql语句后后应关闭游标
+```
+mycsr.close()
+```
+### 连接用完后应关闭连接
+```pyhton
+mydb.close()
 ```
 ## pip 使用
 ### 安装pip
@@ -30,6 +96,10 @@ pip install -U pip
 pip install SomePackage              # 最新版本
 pip install SomePackage==1.0.4       # 指定版本
 pip install "SomePackage>=1.0.4"    # 最小版本
+```
+### 根据requirements.txt安装包
+```sh
+pip install -r requirements.txt
 ```
 ### 升级包（指定版本方法同上）
 ```sh
