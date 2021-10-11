@@ -81,7 +81,7 @@ $("#btn3").click(function(){
 $("#btn1").click(function(){
   alert("值为: " + $("#test").val());
 });
-```
+```#
 ### attr()
 设置或返回所选元素的属性
 ```js
