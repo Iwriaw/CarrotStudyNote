@@ -152,9 +152,7 @@ var users = ['iwriaw', 'likely', 'zhaoxiaotian'];
 function max(a, b) {
     return a > b ? a : b;
 }
-var person = {
-    talk : function() {
+var talk = function() {
         return "Hello world!";
-    }
 }
 ```
