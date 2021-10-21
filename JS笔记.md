@@ -193,7 +193,7 @@ Set对象是值的集合，你可以按照插入的顺序迭代它的元素。 S
 
 另外，NaN和undefined都可以被存储在Set 中， NaN之间被视为相同的值（NaN被认为是相同的，尽管 NaN !== NaN）。
 
-#### Constructor
+#### 构造函数
 ```js
 Set()
 ```
