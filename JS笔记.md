@@ -444,7 +444,48 @@ Map()
 本构造函数用于创建派生对象。
 ##### Map.prototype (en-US)
 表示 Map 构造器的原型。 允许添加属性从而应用于所有的 Map 对象。
-
+#### 实例方法
+```js
+Map.prototype.clear()
+```
+清空Map
+```js
+Map.prototype.delete(key)
+```
+如果该键存在则删除该键值对并返回true，否则返回false。
+```js
+Map.prototype.get(key)
+```
+返回改键所对应的值，如果该键不存在，则返回undefined
+```js
+Map.prototype.has(key)
+```
+如果该键存在则返回true，否则返回false
+```js
+Map.prototype.set(key, value)
+```
+设置该键所对应的值（添加或更新）。返回该Map对象
+##### 迭代方法
+```js
+Map.prototype[@@iterator]()
+```
+返回一个包含[key, value]的数组的新迭代器对象
+```js
+Map.prototype.keys()
+```
+返回一个包含所有key的数组（按插入顺序排列）的新迭代器对象
+```js
+Map.prototype.values()
+```
+返回一个包含所有value的数组（按插入顺序排列）的新迭代器对象
+```js
+Map.prototype.entries()
+```
+返回一个包含所有[key, value]的数组（按插入顺序排列）的新迭代器对象
+```js
+Map.prototype.forEach(callbackFn[, thisArg])
+```
+按照插入顺序，为Set对象中的每个[key, value]调用一次callBackFn。如果提供了thisArg参数，回调中的this会是这个参数。
 #### 示例
 ```js
 let myMap = new Map();
