@@ -631,3 +631,31 @@ console.log(merged.get(2)); // dos##
 console.log(merged.get(3)); // three
 ```
 请注意！为Map设置对象属性也是可以的，但是可能引起大量的混乱。所以尽量不要这样使用。
+
+## 箭头函数
+箭头函数表达式的语法比函数表达式更简洁，并且没有自己的this，arguments，super或new.target。箭头函数表达式更适用于那些本来需要匿名函数的地方，并且它不能用作构造函数。
+### 语法
+```js
+(param1, param2, …, paramN) => { statements }
+(param1, param2, …, paramN) => expression
+//相当于：(param1, param2, …, paramN) =>{ return expression; }
+
+// 当只有一个参数时，圆括号是可选的：
+(singleParam) => { statements }
+singleParam => { statements }
+
+// 没有参数的函数应该写成一对圆括号。
+() => { statements }
+
+//加括号的函数体返回对象字面量表达式：
+params => ({foo: bar})
+
+//支持剩余参数和默认参数
+(param1, param2, ...rest) => { statements }
+(param1 = defaultValue1, param2, …, paramN = defaultValueN) => {
+statements }
+
+//同样支持参数列表解构
+let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
+f();  // 6
+```
